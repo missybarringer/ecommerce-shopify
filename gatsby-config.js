@@ -1,11 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Web Wabi Sabi Store`,
+    description: `Find all of the things you need.`,
+    author: `@WebWabiSabi_com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        shopName: "web-wabi-sabi",
+        accessToken: "50c676159b0e37611699ecd324eae2c2",
+        verbose: true,
+        paginationSize: 250,
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
