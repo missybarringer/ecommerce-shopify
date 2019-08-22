@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Product from './Product'
-
+import Product from "./Product"
 
 const PRODUCTS_LISTING_QUERY = graphql`
   query ProductsListingQuery {
@@ -11,7 +10,7 @@ const PRODUCTS_LISTING_QUERY = graphql`
           id
           title
           images {
-            localFile{
+            localFile {
               childImageSharp {
                 fixed(width: 200) {
                   ...GatsbyImageSharpFixed_withWebp_tracedSVG
@@ -33,16 +32,17 @@ const PRODUCTS_LISTING_QUERY = graphql`
     }
   }
 `
+
 const ProductsListing = () => {
-    const { allShopifyProduct } = useStaticQuery(PRODUCTS_LISTING_QUERY)
-    console.log(allShopifyProduct);
-    return (
-        <div>
-         {allShopifyProduct.edges.map(edge => (
-             <Product product={edge.node} key={edge.node.id} />
-         ))}   
-        </div>
-    )
+  const { allShopifyProduct } = useStaticQuery(PRODUCTS_LISTING_QUERY)
+  console.log("allShopifyProduct", allShopifyProduct)
+  return (
+    <div>
+      {allShopifyProduct.edges.map(edge => (
+        <Product product={edge.node} key={edge.node.id} />
+      ))}
+    </div>
+  )
 }
 
 export default ProductsListing
