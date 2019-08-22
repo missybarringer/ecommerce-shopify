@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 import Img from "gatsby-image"
+import ShopifyBuy from '@shopify/buy-button-js'
+
+console.log(ShopifyBuy.UI);
 
 const ProductDetail = ({ product }) => {
   const [selectedVariant, setVariant] = useState(product.variants[0])
