@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect } from "react"
 import Img from "gatsby-image"
 import ShopifyBuy from '@shopify/buy-button-js'
+import { Base64 } from 'js-base64'
 
 const ProductDetail = ({ product }) => {
   const [selectedVariant, setVariant] = useState(product.variants[0])
@@ -12,6 +13,10 @@ const ProductDetail = ({ product }) => {
       storefrontAccessToken: '50c676159b0e37611699ecd324eae2c2'
     });
     const ui = ShopifyBuy.UI.init(client);
+    ui.createComponent('product', {
+      id: product.id,
+      node: document.getElementById('button')
+    })
     console.log('ui', ui);
     return () => {}, []
   })
