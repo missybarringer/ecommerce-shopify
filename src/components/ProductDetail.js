@@ -23,12 +23,12 @@ const ProductDetail = ({ product }) => {
 
   return (
     <div>
-      {/* <h1>{product.title}</h1>
+      <h1>{product.title}</h1>
       <Img fixed={product.images[0].localFile.childImageSharp.fixed} />
       <p>{product.description}</p>
-      <p>${selectedVariant.price}</p> */}
+      <p>${selectedVariant.price}</p>
       <div id="button"></div>
-      {/* <select
+      <select
         onChange={e => {
           const selected = product.variants.filter(
             variant => variant.sku === e.target.value
@@ -42,7 +42,7 @@ const ProductDetail = ({ product }) => {
             {variant.title}
           </option>
         ))}
-      </select> */}
+      </select>
     </div>
   )
 }
