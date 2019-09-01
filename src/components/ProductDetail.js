@@ -1,25 +1,14 @@
-import React, { useState, useLayoutEffect } from "react"
+import React, { useState } from "react"
 import Img from "gatsby-image"
 import ShopifyBuy from "@shopify/buy-button-js"
-import { Base64 } from "js-base64"
 
+const client = ShopifyBuy.buildClient({
+  domain: 'web-wabi-sabi.store.myshopify.com',
+  storefrontAccessToken: '50c676159b0e37611699ecd324eae2c2'
+});
 const ProductDetail = ({ product }) => {
   const [selectedVariant, setVariant] = useState(product.variants[0])
 
-  useLayoutEffect(() => {
-    const client = ShopifyBuy.buildClient({
-      domain: 'web-wabi-sabi.store.myshopify.com',
-      storefrontAccessToken: '50c676159b0e37611699ecd324eae2c2'
-    });
-    const ui = ShopifyBuy.UI.init(client)
-    const decodded = Base64.decode(product.shopifyId)
-    const actualId = decodded.replace("gid://shopify/Product/", "")
-
-    ui.createComponent("product", {
-      id: actualId,
-      node: document.getElementById("button"),
-    })
-  }, [])
 
   return (
     <div>
@@ -27,7 +16,6 @@ const ProductDetail = ({ product }) => {
       <Img fixed={product.images[0].localFile.childImageSharp.fixed} />
       <p>{product.description}</p>
       <p>${selectedVariant.price}</p>
-      <div id="button"></div>
       <select
         onChange={e => {
           const selected = product.variants.filter(
