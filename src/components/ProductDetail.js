@@ -8,8 +8,6 @@ const client = ShopifyBuy.buildClient({
 });
 const ProductDetail = ({ product }) => {
   const [selectedVariant, setVariant] = useState(product.variants[0])
-
-
   return (
     <div>
       <h1>{product.title}</h1>
