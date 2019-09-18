@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Img from "gatsby-image"
-import { StoreContext } from '../context/StoreContext'
+import { StoreContext } from "../context/StoreContext"
 
 const ProductDetail = ({ product }) => {
   const [selectedVariant, setVariant] = useState(product.variants[0])
+  const { client } = useContext(StoreContext)
+  console.log("client", client)
   return (
     <div>
       <h1>{product.title}</h1>

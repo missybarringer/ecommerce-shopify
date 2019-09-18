@@ -1,9 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
 import Header from "./header"
-import { StoreContext } from '../context/StoreContext'
+import { StoreContext, client } from "../context/StoreContext"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -18,7 +17,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <StoreContext.Provider>
+    <StoreContext.Provider value={{ client }}>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
