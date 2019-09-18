@@ -1,11 +1,7 @@
 import React, { useState } from "react"
 import Img from "gatsby-image"
-import ShopifyBuy from "@shopify/buy-button-js"
+import { StoreContext } from '../context/StoreContext'
 
-const client = ShopifyBuy.buildClient({
-  domain: 'web-wabi-sabi.store.myshopify.com',
-  storefrontAccessToken: '50c676159b0e37611699ecd324eae2c2'
-});
 const ProductDetail = ({ product }) => {
   const [selectedVariant, setVariant] = useState(product.variants[0])
   return (
