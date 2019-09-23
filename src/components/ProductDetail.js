@@ -6,6 +6,7 @@ const ProductDetail = ({ product }) => {
   const [selectedVariant, setVariant] = useState(product.variants[0])
   const { client } = useContext(StoreContext)
   console.log("client", client)
+  console.log("selectedVariant", selectedVariant);
   return (
     <div>
       <h1>{product.title}</h1>
